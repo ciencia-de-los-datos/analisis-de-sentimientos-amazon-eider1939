@@ -57,7 +57,7 @@ def pregunta_02():
     # aleatorios es 12345. Use el 10% de patrones para la muestra de prueba.
     x_train, x_test, y_train, y_test = train_test_split(
         x_tagged,
-        y_train,
+        y_tagged,
         test_size=0.1,
         random_state=12345,
     )
