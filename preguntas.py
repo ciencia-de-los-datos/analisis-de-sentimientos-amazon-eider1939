@@ -92,14 +92,10 @@ def pregunta_04():
     -------------------------------------------------------------------------------------
     """
 
-    # Importe CountVetorizer
-    # Importe GridSearchCV
-    # Importe Pipeline
-    # Importe BernoulliNB
     from sklearn.feature_extraction.text import CountVectorizer
-    from sklearn.naive_bayes import BernoulliNB
-    from sklearn.pipeline import Pipeline
     from sklearn.model_selection import GridSearchCV
+    from sklearn.pipeline import Pipeline
+    from sklearn.naive_bayes import BernoulliNB
 
     # Cargue las variables.
     x_train, x_test, y_train, y_test = pregunta_02()
@@ -113,14 +109,14 @@ def pregunta_04():
     # inferior de 5 palabras. Solo deben analizarse palabras conformadas por
     # letras.
     countVectorizer = CountVectorizer(
-        analyzer=analyzer,
-        lowercase=True,
-        stop_words="english",
-        token_pattern=r"(?u)\b[a-zA-Z][a-zA-Z]+\b",
-        binary=True,
-        max_df=1.0,
-        min_df=5
-    )
+        analyzer = analyzer,
+        lowercase = True,
+        stop_words = "english",
+        token_pattern = r"(?u)\b[a-zA-Z][a-zA-Z]+\b",
+        binary = True,
+        max_df = 1.0,
+        min_df = 5,
+        )
 
     # Cree un pipeline que contenga el CountVectorizer y el modelo de BernoulliNB.
     pipeline = Pipeline(
@@ -134,8 +130,8 @@ def pregunta_04():
     # considerar 10 valores entre 0.1 y 1.0 para el parámetro alpha de
     # BernoulliNB.
     param_grid = {
-        "bernoulli__alpha": np.arange(0.1,1.01, 0.1),
-    }
+        "bernoulli__alpha": np.arange(0.1, 1.01, 0.1),
+        }
 
     # Defina una instancia de GridSearchCV con el pipeline y el diccionario de
     # parámetros. Use cv = 5, y "accuracy" como métrica de evaluación
